@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="listItem"
+            type="databinding.android.com.model.ListItem"/>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                      xmlns:app="http://schemas.android.com/apk/res-auto"
+                      xmlns:tools="http://schemas.android.com/tools"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:orientation="horizontal"
+                      android:padding="@dimen/space_default">
+
+            <ImageView
+                android:id="@+id/imv_list_item_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/download"
+                app:imageUrl="@{listItem.getImageUrl()}"
+                />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_default"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txv_list_item_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@{listItem.getTitle()}"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    tools:text="Test"/>
+
+                <TextView
+                    android:id="@+id/txv_list_item_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_default"
+                    android:gravity="center_vertical"
+                    android:text="@{@string/formatted_string(listItem.getTitle())}"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    tools:text="Test"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black"/>
+    </LinearLayout>
+
+</layout>
