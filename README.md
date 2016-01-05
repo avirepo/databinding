@@ -5,17 +5,20 @@ Databinding introduces a clean code writing approach which allow user to bind a 
 It is basically implementation of MVVM(Model View ViewModel) design pattern.
 
 
-Get Started with Data Binding
-To get started with data binding one should need to follow some steps.
-First make entry for dependency  in gradle file using code In project gradle add following lines
+Usage
+---------------
+This library is a sample app of data binding using simple features.
 
-
+To use the feture of databinding first we have added dependency in project gradle file
+```
 dependencies {
         classpath 'com.android.tools.build:gradle:1.5.0'
         classpath 'com.android.databinding:dataBinder:1.0-rc4'
     }
-In App main module build.gradle add lines 
+```
 
+
+```xml
 apply plugin: 'com.android.application'
 apply plugin: 'com.android.databinding'
 android {
@@ -26,6 +29,26 @@ android {
      ….
     }
 }
+```
+
+License
+-------
+
+    Copyright 2015 Vikas Goyal.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+
 
 
 
