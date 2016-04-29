@@ -1,44 +1,34 @@
 package databinding.android.com.model;
 
-import android.databinding.BaseObservable;
-import android.databinding.Bindable;
-import android.text.TextUtils;
+public class BindingTest {
 
-import databinding.android.com.BR;
+    public BindableString mTitle = new BindableString();
 
-public class BindingTest extends BaseObservable {
+    public BindableString mImage = new BindableString();
 
-    private String title;
-    private String imageUrl;
+    public BindableString mErrorImage = new BindableString();
+
+    public BindableString mInput = new BindableString();
+
+    public BindableBoolean mIsActive = new BindableBoolean();
+
+    public BindableString mNullString = new BindableString();
+
+    public BindableInt mCount = new BindableInt();
+
+    public String mNext = "Next ";
 
     public BindingTest(String pTitle, String pImageUrl) {
-        title = pTitle;
-        imageUrl = pImageUrl;
+        mTitle.set(pTitle);
+        mImage.set(pImageUrl);
+        mErrorImage.set(pImageUrl);
     }
 
-    @Bindable
-    public String getTitle() {
-        return title;
+    public boolean isActive() {
+        return mIsActive.get();
     }
 
-    public void setTitle(String title) {
-        if (TextUtils.equals(title, this.title)) {
-            return;
-        }
-        this.title = title;
-        notifyPropertyChanged(BR.title);
-    }
-
-    @Bindable
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String pImageUrl) {
-        if (TextUtils.equals(pImageUrl, imageUrl)) {
-            return;
-        }
-        imageUrl = pImageUrl;
-        notifyPropertyChanged(BR.imageUrl);
+    public void setActive(boolean pActive) {
+        mIsActive.set(pActive);
     }
 }

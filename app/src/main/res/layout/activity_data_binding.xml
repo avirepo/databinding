@@ -1,52 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
             name="testData"
-            type="databinding.android.com.model.BindingTest" />
+            type="databinding.android.com.model.BindingTest"/>
+
+        <import type="android.view.View"/>
+
         <variable
             name="handler"
             type="databinding.android.com.callbacks.CallbackHandler"/>
     </data>
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/txv_activity_data_binding_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
+            android:background="@android:color/holo_blue_dark"
             android:gravity="center"
-            tools:text="Testing"
-            android:text="@{testData.getTitle()}"
-            android:textColor="@android:color/black"
-            android:textSize="36sp" />
+            android:text="@{testData.mTitle.get()}"
+            android:textColor="@android:color/white"
+            android:textSize="36sp"
+            app:font="@{@string/font_normal}"
+            tools:text="Testing"/>
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            app:imageUrl="@{testData.mImage.get()}"
+            tools:src="@drawable/download"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/space_default"
+            android:background="@android:color/holo_blue_dark"
+            android:gravity="center"
+            android:text="@{testData.mInput.get()}"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:font="@{@string/font_normal}"
+            />
+
+
+        <EditText
+            android:id="@+id/edt_activity_data_binding_input_test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:hint="@string/hint_input_picture_name"
+            app:binding="@{testData.mInput}"
+            />
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_gravity="center"
-            tools:src="@drawable/download"
-            app:imageUrl="@{testData.getImageUrl()}" />
+            app:error="@{@drawable/ic_error}"
+            app:imageUrl="@{testData.mErrorImage.get()}"
+            />
 
 
-        <Button
-            android:id="@+id/btn_navigate"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Next"
-            android:onClick="@{handler.onClickButton}"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/space_default"
+                android:background="@android:color/holo_blue_dark"
+                android:gravity="center"
+                android:text="@{String.valueOf(101 + 201)}"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                tools:text="1"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/space_default"
+                android:background="@android:color/holo_blue_dark"
+                android:gravity="center"
+                android:text="@{@string/first + @string/second}"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                tools:text="1"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/space_default"
+                android:background="@android:color/holo_blue_dark"
+                android:gravity="center"
+                android:text="Visibility Test"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:visibility="@{testData.isActive() ? View.VISIBLE : View.INVISIBLE}"
+                app:font="@{@string/font_normal}"
+                />
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_change"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/space_default"
+            android:background="@android:color/holo_blue_dark"
+            android:onClick="@{testData.isActive() ? handler.onPositiveClick : handler.onNegativeClick}"
+            android:text="@string/act_change_image"
+            android:textColor="@android:color/white"
             />
 
     </LinearLayout>
 
 
 </layout>
+

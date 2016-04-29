@@ -3,4 +3,10 @@
     <string name="arial">arialFont</string>
     <string name="action_settings">Settings</string>
     <string name="formatted_string" formatted="true">%s : Description</string>
+    <string name="act_change_image">Change Image</string>
+    <string name="hint_input_picture_name">Input Picture Name</string>
+    <string name="act_next">Next</string>
+
+    <string name="first">"First append "</string>
+    <string name="second">Second</string>
 </resources>
